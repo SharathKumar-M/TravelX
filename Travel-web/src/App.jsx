@@ -1,11 +1,14 @@
 import React from 'react'
+import { NavLink, Outlet } from 'react-router'
+import Header from './componants/Header'
 
 const App = () => {
+
+
   return (
     <>
-      <div className='bg-gray-300'>
-        <h1 className='text-5xl text-center'>Travelx 💕</h1>
-      </div>
+      <Header />
+      <Outlet />
     </>
   )
 }
