@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 const Home = () => (
      <div className="text-center py-20 px-4">
-          <h1 className="text-5xl font-bold text-gray-800 mb-6">Welcome to TrustiFY</h1>
+          <h1 className="text-5xl font-bold text-gray-800 mb-6">Welcome TrustiFY</h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
                Revolutionize document verification with blockchain. Secure, fast, unbreakable.
           </p>
