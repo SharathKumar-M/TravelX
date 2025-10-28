@@ -14,9 +14,14 @@ app.use(express.json());
 app.use("/api/auth", require("./router/authRoutes"));
 
 app.get("/", (req, res) => {
-  res.json({ message: "travelx server is running" });
+  res.json({ message: "TrustiFY server is running" });
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: "Something went wrong!" });
 });
 
 app.listen(PORT, () => {
-  console.log("server is running in port 5000");
+  console.log(`Server running on port ${PORT}`);
 });
