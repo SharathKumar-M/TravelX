@@ -3,8 +3,6 @@ import { NavLink, Outlet } from 'react-router'
 import Header from './componants/Header'
 
 const App = () => {
-
-
   return (
     <>
       <Header />
