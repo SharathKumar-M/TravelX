@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router'
+import { Link, NavLink } from 'react-router'
 import { useAuthStore } from '../stores/authStore'
 
 const Header = () => {
@@ -14,8 +14,10 @@ const Header = () => {
 
                               {user ? (<>
                                    <NavLink to='/'>Home</NavLink>
-                                   <NavLink to='/myprofile'>Profile</NavLink>
+                                   <NavLink to='/currency'>Currency</NavLink>
+                                   <Link to='/myprofile'>Profile</Link>
                               </>) : (<>
+                                   <NavLink to='/getstarted'></NavLink>
                                    <NavLink to='/home/login'>Login</NavLink>
                                    <NavLink to='/home/register'>Register</NavLink></>)}
 

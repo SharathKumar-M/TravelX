@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { useAuthStore } from '../../stores/authStore'
 
 const Myprofile = () => {
@@ -17,7 +18,7 @@ const Myprofile = () => {
                <h3>Hello {user.name}</h3>
                <p>Email - {user.email}</p>
                <br />
-               <button onClick={logout} navigate='./Login.jsx'>Logout</button>
+               <button onClick={logout}>Logout</button>
                <br /><br />
                <Link to='/myprofile/edit'>Edit Profile</Link>
           </>

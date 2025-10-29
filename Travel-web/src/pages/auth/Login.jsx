@@ -22,7 +22,7 @@ const Login = () => {
                          <input required='true' type="password" onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
                          <br />
 
-                         <button type='submit' navigate='/myprofile'>Login</button>
+                         <button type='submit'>Login</button>
                     </form>
                </div>
           </>
