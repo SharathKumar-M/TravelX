@@ -9,12 +9,10 @@ const RegisterUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // Basic validation
     if (!name || !email || !password) {
       return res.status(400).json({ error: "Please add all fields" });
     }
 
-    // Check if user exists
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ error: "User already exists" });
@@ -39,7 +37,6 @@ const LoginUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user && (await user.matchPassword(password))) {
-      // Fixed: added await
       res.json({ token: generateToken(user._id) });
     } else {
       res.status(401).json({ error: "Invalid email or password" }); // Fixed: no undefined error
