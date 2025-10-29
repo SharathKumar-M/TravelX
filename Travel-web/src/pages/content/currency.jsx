@@ -1,9 +1,9 @@
 import React from 'react'
 
-const currency = () => {
+const Currency = () => {
      return (
           <div>currency</div>
      )
 }
 
-export default currency
+export default Currency

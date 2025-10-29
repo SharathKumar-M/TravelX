@@ -1,3 +1,4 @@
+import { Navigate } from "react-router";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
@@ -57,6 +58,7 @@ const authStore = (set, get) => ({
       localStorage.setItem("token", data.token);
       set({ token: data.token });
       await get().getProfile();
+      Navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -88,6 +90,7 @@ const authStore = (set, get) => ({
   logout: () => {
     localStorage.removeItem("token");
     set({ token: null, user: null });
+    Navigate("/");
   },
 });
 
