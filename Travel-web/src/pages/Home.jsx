@@ -5,7 +5,7 @@ import { NavLink } from 'react-router'
 const Home = () => {
      return (
           <>
-               <h1>home page</h1>
+               <h1>Home Pgae</h1>
           </>
      )
 }
