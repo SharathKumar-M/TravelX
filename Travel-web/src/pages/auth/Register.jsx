@@ -27,6 +27,23 @@ const Register = () => {
                          <input required='true' type="password" onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
                          <button type='submit'>Sumbit</button>
                     </form>
+
+                    <p>Have an account?<a className='text-blue-400' href="">Sign in</a></p>
+
+                    <div className="space-y-4 mt-4">
+                         <a
+                              href="/api/auth/google"  //(proxies to backend)
+                              className=" bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                         >
+                              Register with Google
+                         </a>
+                         <a
+                              href="/api/auth/github"
+                              className=" bg-gray-800 text-white py-2 px-4 rounded hover:bg-gray-900"
+                         >
+                              Register with GitHub
+                         </a>
+                    </div>
                </div>
           </>
      )

@@ -13,3 +13,5 @@ npm install cors
 npm install bcryptjs
 
 npm install jsonwebtoken
+
+npm i express-session passport passport-google-oauth20 passport-github2

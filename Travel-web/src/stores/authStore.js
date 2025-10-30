@@ -87,9 +87,20 @@ const authStore = (set, get) => ({
       set({ loading: false });
     }
   },
+
+  handleOAuthToken: (tokenFromUrl) => {
+    if (tokenFromUrl) {
+      localStorage.setItem("token", tokenFromUrl);
+      set({ token: tokenFromUrl });
+      get().getProfile();
+      return { success: true };
+    }
+    return { error: "No token in URL" };
+  },
+
   logout: () => {
     localStorage.removeItem("token");
-    set({ token: null, user: null });
+    set({ token: null, user: null, error: null, loading: false });
     Navigate("/");
   },
 });

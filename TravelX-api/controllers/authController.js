@@ -1,3 +1,4 @@
+const { generateState, generateCodeVerifier } = require("arctic");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 
@@ -65,4 +66,19 @@ const updateuserProfile = async (req, res) => {
   }
 };
 
-module.exports = { RegisterUser, LoginUser, getuserProfile, updateuserProfile };
+const oauthCallback = async (req, res) => {
+  if (req.user) {
+    const token = generateToken(req.user._id);
+    res.redirect(`$http://localhost:3000/profile?token=${token}`);
+  } else {
+    res.redirect(`$http://localhost:3000/login?error=OAuth failed`);
+  }
+};
+
+module.exports = {
+  RegisterUser,
+  LoginUser,
+  getuserProfile,
+  updateuserProfile,
+  oauthCallback,
+};
