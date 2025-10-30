@@ -15,7 +15,7 @@ const Myprofile = () => {
      return (
           <>
                <h1>My Profile</h1>
-               <h3>Hello {user.name}</h3>
+               <h3 className='text-5xl text-blue-400'>Hello {user.name}</h3>
                <p>Email - {user.email}</p>
                <br />
                <button onClick={logout}>Logout</button>
