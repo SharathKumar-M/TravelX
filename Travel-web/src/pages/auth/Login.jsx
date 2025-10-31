@@ -32,7 +32,7 @@ const Login = () => {
                          </button>
                     </form>
 
-                    <p>Don't have an account?<a className='text-blue-400' href="">Sign Up</a></p>
+                    <p>Don't have an account?<a className='text-blue-400' href="/home/register">Sign Up</a></p>
 
                     <div className="space-y-4 mt-4">
                          <a

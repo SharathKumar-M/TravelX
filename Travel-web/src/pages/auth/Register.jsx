@@ -33,7 +33,7 @@ const Register = () => {
                          </button>
                     </form>
 
-                    <p>Have an account?<a className='text-blue-400' href="">Sign in</a></p>
+                    <p>Have an account?<a className='text-blue-400' href="/home/login">Sign in</a></p>
 
                     <div className="space-y-4 mt-4">
                          <a
