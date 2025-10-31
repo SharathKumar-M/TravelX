@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import { useAuthStore } from '../../stores/authStore'
-import { Navigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
-     const register = useAuthStore(state => state.register)
+     const { register, loading } = useAuthStore();
      const [name, setName] = useState('')
      const [email, setEmail] = useState('')
      const [password, setPassword] = useState('')
+     const navigate = useNavigate();
+
 
      const submitRegister = async (e) => {
           e.preventDefault()
-          register(name, email, password)
+          register(name, email, password);
+          navigate('/profile');
 
      }
 
@@ -20,15 +23,17 @@ const Register = () => {
                <h3>Create your account</h3>
                <div className=''>
                     <form onSubmit={submitRegister}>
-                         <input required='true' type="name" onChange={(e) => setName(e.target.value)} placeholder='Enter Name' />
+                         <input required='true' type="text" onChange={(e) => setName(e.target.value)} placeholder='Enter Name' />
                          <br />
                          <input required='true' type="email" onChange={(e) => setEmail(e.target.value)} placeholder='Enter email' />
                          <br />
                          <input required='true' type="password" onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
-                         <button type='submit'>Sumbit</button>
+                         <button type='submit' disabled={loading}>
+                              {loading ? 'Registering...' : 'Submit'}
+                         </button>
                     </form>
 
-                    <p>Have an account?<a className='text-blue-400' href="">Sign in</a></p>
+                    <p>Have an account?<a className='text-blue-400' href="/home/login">Sign in</a></p>
 
                     <div className="space-y-4 mt-4">
                          <a

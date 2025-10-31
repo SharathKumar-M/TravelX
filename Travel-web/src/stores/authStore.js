@@ -8,6 +8,11 @@ const authStore = (set, get) => ({
   token: localStorage.getItem("token") || null,
   user: null,
   getProfile: async () => {
+    const token = get().token;
+    if (!token) {
+      set({ error: "No token – login required" });
+      return;
+    }
     try {
       const response = await fetch("http://localhost:5000/api/auth/profile", {
         method: "GET",
@@ -16,14 +21,17 @@ const authStore = (set, get) => ({
           Authorization: `Bearer ${get().token}`,
         },
       });
-      const data = await response.json();
 
-      if (response.ok) {
-        console.log(data);
-        set({ user: data });
+      if (!response.ok) {
+        throw new Error("Profile fetch failed: " + response.statusText);
       }
+      const data = await response.json();
+      console.log("Profile Data:", data);
+      set({ user: data });
     } catch (error) {
       console.log(error);
+      set({ error: error.message });
+      get().logout();
     }
   },
   register: async (name, email, password) => {
@@ -40,6 +48,7 @@ const authStore = (set, get) => ({
       localStorage.setItem("token", data.token);
       set({ token: data.token });
       await get().getProfile();
+      return { success: true };
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +67,7 @@ const authStore = (set, get) => ({
       localStorage.setItem("token", data.token);
       set({ token: data.token });
       await get().getProfile();
-      Navigate("/");
+      return { success: true };
     } catch (error) {
       console.log(error);
     }
@@ -97,7 +106,6 @@ const authStore = (set, get) => ({
     }
     return { error: "No token in URL" };
   },
-
   logout: () => {
     localStorage.removeItem("token");
     set({ token: null, user: null, error: null, loading: false });

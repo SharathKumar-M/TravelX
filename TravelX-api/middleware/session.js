@@ -6,6 +6,7 @@ module.exports = (app) => {
       secret: process.env.JWT_SECRET,
       resave: false,
       saveUninitialized: false,
+      cookie: { secure: false },
     })
   );
 };

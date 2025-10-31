@@ -40,7 +40,7 @@ const LoginUser = async (req, res) => {
     if (user && (await user.matchPassword(password))) {
       res.json({ token: generateToken(user._id) });
     } else {
-      res.status(401).json({ error: "Invalid email or password" }); // Fixed: no undefined error
+      res.status(401).json({ error: "Invalid email or password" });
     }
   } catch (error) {
     console.error("Login Error:", error);
@@ -69,9 +69,11 @@ const updateuserProfile = async (req, res) => {
 const oauthCallback = async (req, res) => {
   if (req.user) {
     const token = generateToken(req.user._id);
-    res.redirect(`$http://localhost:3000/profile?token=${token}`);
+    console.log("Generated Token for OAuth User:", token);
+    res.redirect(`${process.env.FRONTEND_URL}/?token=${token}`);
   } else {
-    res.redirect(`$http://localhost:3000/login?error=OAuth failed`);
+    console.error("No user in req after OAuth");
+    res.redirect(`${process.env.FRONTEND_URL}/?error=OAuth failed`);
   }
 };
 
