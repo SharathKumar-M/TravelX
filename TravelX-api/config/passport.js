@@ -19,6 +19,7 @@ passport.use(
       callbackURL: "/api/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log("Google Profile Received:", profile);
       try {
         let oauthAccount = await OAuthAccount.findOne({
           provider: "google",
@@ -34,6 +35,7 @@ passport.use(
               name: profile.displayName,
               email: profile.emails[0].value,
             }));
+          console.log("Created/Found User:", user);
           oauthAccount = await OAuthAccount.create({
             userId: user._id,
             provider: "google",
@@ -56,6 +58,7 @@ passport.use(
       callbackURL: "/api/auth/github/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log("GitHub Profile Received:", profile);
       try {
         let oauthAccount = await OAuthAccount.findOne({
           provider: "github",
@@ -71,6 +74,7 @@ passport.use(
               name: profile.displayName,
               email: profile.emails[0].value,
             }));
+          console.log("Created/Found User:", user);
           oauthAccount = await OAuthAccount.create({
             userId: user._id,
             provider: "github",
