@@ -10,14 +10,13 @@ const Header = () => {
 
   const navLinks = user
     ? [
-        { to: '/', label: 'Home' },
-        { to: '/currency', label: 'Currency' },
-        { to: '/myprofile', label: 'Profile', icon: User },
-      ]
+      { to: '/', label: 'Home' },
+      { to: '/currency', label: 'Currency' },
+      { to: '/myprofile', label: 'Profile', icon: User },
+    ]
     : [
-        { to: '/home/login', label: 'Login', icon: LogIn },
-        { to: '/home/register', label: 'Register', icon: UserPlus },
-      ];
+      { to: '/home/login', label: 'Login', icon: LogIn },
+    ];
 
   return (
     <header className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white shadow-lg border-b border-slate-700">
@@ -72,10 +71,9 @@ const Header = () => {
                   key={link.to}
                   to={link.to}
                   className={({ isActive }) =>
-                    `flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
-                      isActive
-                        ? 'bg-cyan-600 text-white shadow-md'
-                        : 'text-gray-300 hover:text-white hover:bg-slate-700/80'
+                    `flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${isActive
+                      ? 'bg-cyan-600 text-white shadow-md'
+                      : 'text-gray-300 hover:text-white hover:bg-slate-700/80'
                     }`
                   }
                 >
@@ -129,10 +127,9 @@ const Header = () => {
                     to={link.to}
                     onClick={() => setMobileMenuOpen(false)}
                     className={({ isActive }) =>
-                      `flex items-center space-x-2 px-4 py-3 rounded-lg transition-all ${
-                        isActive
-                          ? 'bg-cyan-600 text-white'
-                          : 'text-gray-300 hover:bg-slate-700 hover:text-white'
+                      `flex items-center space-x-2 px-4 py-3 rounded-lg transition-all ${isActive
+                        ? 'bg-cyan-600 text-white'
+                        : 'text-gray-300 hover:bg-slate-700 hover:text-white'
                       }`
                     }
                   >
