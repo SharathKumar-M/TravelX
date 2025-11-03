@@ -14,13 +14,15 @@ const Myprofile = () => {
      if (!user.name) return <p>No User Data, try Logging in again.</p>
      return (
           <>
-               <h1>My Profile</h1>
-               <h3 className='text-5xl text-blue-400'>Hello {user.name}</h3>
-               <p>Email - {user.email}</p>
-               <br />
-               <button onClick={logout}>Logout</button>
-               <br /><br />
-               <Link to='/myprofile/edit'>Edit Profile</Link>
+               <div className=''>
+                    <h1>My Profile</h1>
+                    <h3 className='text-5xl text-blue-400'>Hello {user.name}</h3>
+                    <p>Email - {user.email}</p>
+                    <br />
+                    <button onClick={logout}>Logout</button>
+                    <br /><br />
+                    <Link to='/myprofile/edit'>Edit Profile</Link>
+               </div>
           </>
      )
 }
